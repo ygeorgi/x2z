@@ -4,18 +4,10 @@ compiler: gcc
 
 os: linux
 
-install:
-    - sudo apt-get install cppcheck
-
 script:
-    # Use quotes because * is a special character in Yaml files
-    - "g++ -std=c++98 -coverage src/x2z/*.cc -o x2z.exe"
-    - ./x2z.exe examples/h2co.xyz
-    - ./x2z.exe examples/ch4.xyz
-    - ./x2z.exe examples/n2.xyz
-    - cppcheck --error-exitcode=1 src/x2z/*
-    - gcov -o. -r src/x2z/x2z.cc
-
-after_success:
-    - bash <(curl -s https://codecov.io/bash)
-    - "rm *.gc*"
+    - mkdir build
+    - cd build
+    - cmake .. # -DCMAKE_CXX_FLAGS='--coverage'
+    - make
+    - sudo make install
+    - x2z ../examples/ch4.xyz
