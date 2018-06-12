@@ -15,6 +15,18 @@ You can then try it out on an xyz file like this:
 ```
 x2z examples/ch4.xyz
 ```
+If you wish to use the Python bindings, do
+```
+export PYTHONPATH=$PYTHONPATH:/usr/local/lib
+```
+and you should be able to do things like the following.
+```
+>>> import x2ztools
+>>> x2ztools.isotope('H')
+1
+>>> x2ztools.isotope('C')
+12
+```
 
 ## Acknowledgment
 

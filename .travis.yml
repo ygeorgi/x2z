@@ -1,13 +1,24 @@
-language: cpp
-
-compiler: gcc
+language: python
 
 os: linux
 
-script:
+compiler: gcc
+
+python:
+    - "3.6"
+
+install:
+    - pip install pybind11
+    - pip install pytest
+    - python3 -m pybind11 --includes
     - mkdir build
     - cd build
-    - cmake .. # -DCMAKE_CXX_FLAGS='--coverage'
+    - cmake .. -DCMAKE_CXX_FLAGS="`python -m pybind11 --includes`"
     - make
     - sudo make install
-    - x2z ../examples/ch4.xyz
+    - export PYTHONPATH=$PYTHONPATH:/usr/local/lib
+    - cd ..
+
+script:
+    - x2z examples/ch4.xyz
+    - pytest -v
