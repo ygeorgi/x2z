@@ -1,5 +1,7 @@
 # x2z
 
+[![Build Status](https://travis-ci.org/PACChem/x2z.svg)](https://travis-ci.org/PACChem/x2z)
+
 ## Install
 
 The following commands will build the executable and place it in your bin.
