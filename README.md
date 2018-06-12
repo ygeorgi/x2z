@@ -1,5 +1,21 @@
 # x2z
 
+## Install
+
+The following commands will build the executable and place it in your bin.
+```
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+cd ..
+```
+You can then try it out on an xyz file like this:
+```
+x2z examples/ch4.xyz
+```
+
 ## Acknowledgment
 
 This research was supported by the Exascale Computing Project (ECP), Project
