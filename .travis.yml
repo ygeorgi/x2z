@@ -9,5 +9,5 @@ script:
     - cd build
     - cmake .. # -DCMAKE_CXX_FLAGS='--coverage'
     - make
-    - make install
+    - sudo make install
     - x2z ../examples/ch4.xyz
