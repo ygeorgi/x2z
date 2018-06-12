@@ -12,3 +12,4 @@ add_library(libx2z
     ${PROJECT_SOURCE_DIR}/src/libx2z/units.cc)
 add_executable(x2z ${PROJECT_SOURCE_DIR}/src/x2z.cc)
 target_link_libraries(x2z libx2z)
+install(TARGETS x2z DESTINATION bin)
