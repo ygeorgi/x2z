@@ -4,9 +4,9 @@
 #include<iostream>
 #include<sstream>
 
-#include "units.hh"
-#include "chem.hh"
-#include "math.hh"
+#include "libx2z/units.hh"
+#include "libx2z/chem.hh"
+#include "libx2z/math.hh"
 
 int main(int argc, const char* argv [])
 {
