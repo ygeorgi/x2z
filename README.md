@@ -24,9 +24,8 @@ export PYTHONPATH=$PYTHONPATH:/usr/local/lib
 and you should be able to do things like the following.
 ```
 >>> import x2ztools
->>> x2ztools.is_linear(('O', 'H', 'H'), [(0., 0., 0.), (0., 0., 1.), (0., 1.,
->>> 0.)])
-False
+>>> x2ztools.is_linear(('H', 'H'), [(0., 0., 0.), (0., 0., 1.)])
+True
 ```
 
 ## Acknowledgment
