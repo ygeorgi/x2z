@@ -1,5 +1,6 @@
 import x2ztools
 import numpy
+import pytest
 
 
 def test__mass():
@@ -7,6 +8,17 @@ def test__mass():
     assert numpy.allclose(x2ztools.mass('C', iso=13), 23703.6661089)
 
 
-def test__atom_string():
-    assert (x2ztools.atom_string('C', (1.123098123, 0., 2.1239081)) ==
-            ' C         1.1231              0        2.12391')
+def test__is_linear():
+
+    with pytest.raises(ValueError):
+        x2ztools.is_linear(('H',), [(0., 0.)])
+
+    with pytest.raises(ValueError):
+        x2ztools.is_linear(('H',), [(0., 0., 0.), (0., 0., 1.)])
+
+    assert (x2ztools.is_linear(('O', 'H', 'H'),
+                               [(0., 0., 0.), (0., 0., 1.), (0., 1., 0.)])
+            is False)
+    assert (x2ztools.is_linear(('O', 'H', 'H'),
+                               [(0., 0., 0.), (0., 0., 1.), (0., 0., 2.)])
+            is True)
