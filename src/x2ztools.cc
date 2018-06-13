@@ -79,11 +79,21 @@ bool is_linear(const std::vector<std::string>& ls,
 }
 
 
+bool is_planar(const std::vector<std::string>& ls,
+               const std::vector<std::vector<double>>& xyzs) {
+    MolecOrient mo = _molec_orient(ls, xyzs);
+    return mo.is_plane();
+}
+
+
 PYBIND11_MODULE(x2ztools, module) {
     module.def("mass", &mass,
                "Get the mass of an isotope",
                py::arg("l"), py::arg("iso")=0);
     module.def("is_linear", &is_linear,
                "Find out whether a molecule is linear",
+               py::arg("ls"), py::arg("xyzs"));
+    module.def("is_planar", &is_planar,
+               "Find out whether a molecule is planar",
                py::arg("ls"), py::arg("xyzs"));
 }
