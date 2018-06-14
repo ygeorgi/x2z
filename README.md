@@ -42,7 +42,7 @@ computing imperative.
 
 ## Notice
 
-Copyright (c) 2018-2018 Yuri Georgievski (ygeorgi@anl.gov), Stephen J.
+Copyright (c) 2018 Yuri Georgievski (ygeorgi@anl.gov), Stephen J.
 Klippenstein (sjk@anl.gov), and Argonne National Laboratory.
 
 Licensed under the Apache License, Version 2.0 (the "License");
