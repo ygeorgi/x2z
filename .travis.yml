@@ -10,7 +10,6 @@ python:
 install:
     - pip install pybind11
     - pip install pytest
-    - python3 -m pybind11 --includes
     - mkdir build
     - cd build
     - cmake .. -DCMAKE_CXX_FLAGS="`python -m pybind11 --includes`"
