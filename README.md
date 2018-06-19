@@ -1,6 +1,6 @@
 # x2z
 
-[![Build Status](https://travis-ci.org/PACChem/x2z.svg)](https://travis-ci.org/PACChem/x2z)
+[![Build Status](https://travis-ci.com/PACChem/x2z.svg)](https://travis-ci.com/PACChem/x2z)
 
 ## Install
 
