@@ -2,6 +2,12 @@
 
 [![Build Status](https://travis-ci.com/PACChem/x2z.svg)](https://travis-ci.com/PACChem/x2z)
 
+The code reads Cartesian representation of the molecule. It then
+makes heuristic analysis of molecular bonding to extract resonantly
+stabilized electronic configurations, internal rotation structure,
+beta-scission bonds, rotational symmetry number, and z-matrix
+representation of the molecule.
+
 ## Install
 
 The following commands will build the executable and place it in your bin.
