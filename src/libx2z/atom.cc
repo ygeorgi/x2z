@@ -7,7 +7,71 @@
 
 /************************** Atom description ****************************/
 
-const char* AtomBase::name() const throw(Error::General)
+// atomic radius
+//
+double atomic_radius (const AtomBase& a)
+{
+  const char funame [] = "atomic_radius: ";
+  
+  switch(a.number()) {
+    //
+  case AtomBase::HYDROGEN:
+    //
+    return .36;
+    
+  case AtomBase::CARBON:
+    //
+    return 0.75;
+
+  case AtomBase::NITROGEN:
+    //
+    return 0.7;
+    
+  case AtomBase::OXYGEN:
+    //
+    return 0.65;
+    
+  case AtomBase::FLUORINE:
+    //
+    return 0.6;
+    
+  case AtomBase::SODIUM:
+    //
+    return 1.8;
+
+  case AtomBase::SILICON:
+    //
+    return 1.1;
+    
+  case AtomBase::PHOSPHORUS:
+    //
+    return 1.;
+    
+  case AtomBase::SULFUR:
+    //
+    return 1.;
+    
+  case AtomBase::CHLORINE:
+    //
+    return 1.;
+    
+  case AtomBase::TITANIUM:
+    //
+    return 1.4;
+    
+  case AtomBase::BROMINE:
+    //
+    return 1.15;
+    
+  default:
+    //
+    std::cerr << funame << "not implemented for " << a.name() << "\n";
+    
+    throw Error::Range();
+  }
+}
+
+const char* AtomBase::name() const 
 {
   const char funame [] = "AtomBase::name: ";
 
@@ -44,7 +108,7 @@ const char* AtomBase::name() const throw(Error::General)
   }
 }
 
-void AtomBase::_str2num(const std::string& name) throw(Error::General)
+void AtomBase::_str2num(const std::string& name) 
 {
   const char funame [] = "AtomBase::set(const std::string&): ";
 
@@ -81,7 +145,7 @@ void AtomBase::_str2num(const std::string& name) throw(Error::General)
   _isot = _default_isot();
 }
 
-int AtomBase::_default_isot () const throw(Error::General)
+int AtomBase::_default_isot () const 
 {
   const char funame [] = "AtomBase::_default_isot: ";
 
@@ -119,7 +183,7 @@ int AtomBase::_default_isot () const throw(Error::General)
   }
 }
 
-double AtomBase::mass () const throw(Error::General)
+double AtomBase::mass () const 
 {
   const char funame [] = "AtomBase::mass: ";
 
@@ -233,7 +297,7 @@ double AtomBase::mass () const throw(Error::General)
   }
 }
 
-unsigned AtomBase::valence () const throw(Error::General)
+unsigned AtomBase::valence () const 
 {
   const char funame [] = "AtomBase::valence: ";
 
@@ -266,7 +330,7 @@ unsigned AtomBase::valence () const throw(Error::General)
   }
 }
 
-void Atom::_read (std::istream& from) throw(Error::General)
+void Atom::_read (std::istream& from) 
 {
     const char funame [] = "Atom::_read: ";
 

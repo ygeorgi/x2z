@@ -17,6 +17,11 @@
 
 extern double angle_tolerance, distance_tolerance;
 
+// incipient bond
+//
+extern std::list<std::set<int> > incipient_bond;
+
+
 bool are_angles_equal (double, double);
 
 bool are_distances_equal (double, double);
@@ -59,9 +64,7 @@ private:
   double _dm [3]; // distance matrix of first three atoms
 
 public:
-  //
-  MolecOrient (const MolecGeom&);
-  
+  MolecOrient (const MolecGeom&) ; 
   operator MolecGeom () const { return *this; }
 
   int  sym_num       () const ;
@@ -72,10 +75,12 @@ public:
   int size () const { return MolecGeom::size(); }
   const Atom& operator [] (int i) const { return MolecGeom::operator[](i); }
 
-  friend int compare (const MolecOrient&, const MolecOrient&, MolecOrient::mode_t);
+  friend int compare (const MolecOrient&, const MolecOrient&, MolecOrient::mode_t) 
+    ;
 };
 
-int compare (const MolecOrient&, const MolecOrient&, MolecOrient::mode_t);
+int compare (const MolecOrient&, const MolecOrient&, MolecOrient::mode_t)
+    ;
 
 // connection graph
 //
@@ -85,13 +90,9 @@ class PrimStruct : public ConMat<unsigned>, private MolecGeom {
   
 public:
   //
-  PrimStruct (const MolecGeom&, const std::set<std::set<int> >&);
+  explicit PrimStruct (const MolecGeom&) ;
   
   const Atom& operator [] (int i) const { return MolecGeom::operator[](i); }
-
-  int valence (int i) const { return (*this)[i].valence(); }
-  
-  const char* atom_name (int i) const { return (*this)[i].name(); }
   
   int size () const { return MolecGeom::size(); }
 
@@ -179,16 +180,20 @@ public:
 
   static const char* var_name (int);
 
-  MolecStruct (const PrimStruct&, const std::set<std::set<int> >&) ;
+  explicit MolecStruct (const PrimStruct&) ;
 
-  double bond_order (int, int) const;
+  unsigned  bond_order (int, int, int) const;
+  double    bond_order (int, int)      const;
   
+  void set_bond_order (int i, int j, unsigned order, int bs =0) ;
+  void remove_resonance (int i) ;
+  void add_resonance ();
+  
+  void add_resonance (const ConMat<unsigned>&) ;
   void print (std::ostream&, const std::string& = std::string()) const;
 
   bool is_single  (int at0, int at1) const ;
-
   BetaData is_beta    (int at0, int at1) const ;
-
   bool is_radical (int at)           const;
 
   const std::string&            zmatrix () const { return _zmat; }
